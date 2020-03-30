@@ -84,6 +84,19 @@ function swapItems(fromIndex, toIndex) {
     listItems[toIndex].appendChild(itemOne);
 }
 
+function checkOrder() {
+    listItems.forEach((listItem, index) => {
+        const personName = listItem.querySelector('.draggable').innerText.trim();
+
+        if (personName !== richPeople[index]) {
+            listItem.classList.add('wrong');
+        } else {
+            listItem.classList.remove('wrong');
+            listItem.classList.add('right');
+        }
+    })
+}
+
 function addEventListener() {
     const draggables = document.querySelectorAll('.draggable');
     const dragListItems = document.querySelectorAll('.draggable-list li');
@@ -101,3 +114,5 @@ function addEventListener() {
 }
 
 /* End of drag and drop section */
+
+check.addEventListener('click', checkOrder);
